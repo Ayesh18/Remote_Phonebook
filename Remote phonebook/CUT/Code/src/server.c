@@ -369,7 +369,6 @@ void SToRecvData(char * recvdata)
 {
         char temp[200]="";
         mlen=recv(connectfd ,temp,sizeof(temp), 0);
-        //mlen=recv(sockfd ,temp,sizeof(temp), 0);
         strcpy(recvdata,temp);
         if(strcmp(temp,"bye")==0 || strcmp(temp,"Bye")==0)
         {                  
