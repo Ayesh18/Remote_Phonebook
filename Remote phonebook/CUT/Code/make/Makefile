@@ -38,11 +38,11 @@ $(OBJ)/user.o: $(SRC)/user.c
 
 #run server
 server:
-	 valgrind $(CVFLAGS) $(BIN)/server
+	 ./$(BIN)/server
 
 #run client
 client:
-	 valgrind $(CVFLAGS) $(BIN)/client
+	 ./$(BIN)/client
 
 clean:
 	rm $(BIN)/server 
