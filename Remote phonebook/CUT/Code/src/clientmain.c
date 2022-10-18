@@ -1,4 +1,4 @@
-//program to define the server main function
+//program to define the client main function
 #include <stdio.h>
 #include <signal.h>
 #include <string.h>
