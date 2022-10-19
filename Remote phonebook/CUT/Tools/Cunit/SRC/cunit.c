@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include "CUnit/Basic.h"
+#include "CUnit/Automated.h"
 #include <ctype.h>
 #include <CUnit/Basic.h>
 #include <stdbool.h>
 #include "init.h"
 #include "tests.h"
 #include "func.h"
+
 int main()
 {
         CU_pSuite pSuite1 = NULL;
@@ -19,7 +21,7 @@ int main()
                 return CU_get_error();
         }
 
-        pSuite1 = CU_add_suite("suite for removing contact frrom a file...", init_suite_remove_contact, clean_suite_remove_contact);
+        pSuite1 = CU_add_suite("suite for removing contact from a file...", init_suite_remove_contact, clean_suite_remove_contact);
 
         if (NULL == pSuite1)
         {
@@ -48,6 +50,14 @@ int main()
         }
         CU_basic_set_mode(CU_BRM_VERBOSE);
         CU_basic_run_tests();
+        printf("\n");
+	CU_basic_show_failures(CU_get_failure_list());
+	printf("\n\n");
+
+	/* Run all tests using the automated interface */
+	CU_automated_run_tests();
+	CU_list_tests_to_file();
+	   
         CU_cleanup_registry();
         return CU_get_error();
 }
