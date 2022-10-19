@@ -1,4 +1,14 @@
 //program to define the server main function
+/**********************************************************************************
+	FILENAME: servermain.c
+	DESCRIPTION:This file is used to define the server main function.
+	DATE            NAME              REASON
+	------------------------------------------------------------------
+    14/10/2022      Username          
+ 
+ * ********************************************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
