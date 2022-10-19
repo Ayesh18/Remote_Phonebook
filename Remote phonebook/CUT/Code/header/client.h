@@ -1,4 +1,9 @@
-//program to have a header file for client class
+/********************************************************************************************
+**     FILENAME      :      client.h
+**
+**    DESCRIPTION    :      This File contains client header files.
+*****************************************************************************************/
+
 #include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
