@@ -1,4 +1,15 @@
-/*  program to define the server   */
+
+/*****************************************************************************************************
+**
+**   FILENAME    :  server.c
+**
+**  DESCRIPTION  : this file contains all the server side functinalities and define the server.
+**
+** DATE             NAME            REASON
+**-------------------------------------------------------------
+** 14/10/2022       Username            
+**
+*****************************************************************************************************/
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -28,7 +39,15 @@ void load()
 	fclose(fp);
 }
 
-//function to create socket 
+
+/*****************************************************************************************************
+**
+**   FunctionName    : ToCreateSocket
+**
+**  DESCRIPTION  : function to create socket.
+**   
+**
+*****************************************************************************************************/
 
 int ToCreateSocket()
 {
@@ -53,7 +72,15 @@ int ToCreateSocket()
 
 
 
-//function to bind the socket
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : ToBindSocket
+**
+**  DESCRIPTION  : function to bind the socket.
+**  
+**
+*****************************************************************************************************/
 int ToBindSocket()
 {
             int ret;
@@ -67,7 +94,15 @@ int ToBindSocket()
 
 
 
-//function to call listening to the port 8028
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : ToListen
+**
+**  DESCRIPTION  : function to call listening to the port 8028.
+**
+**
+*****************************************************************************************************/
 int ToListen()
 {
             int ret;
@@ -81,7 +116,15 @@ int ToListen()
 
 
 
-//function to accept connection and add concurrency by using child process
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : ToAcceptConnections
+**
+**  DESCRIPTION  : function to accept connection and add concurrency by using child process.
+**
+
+*****************************************************************************************************/
 void ToAcceptConnections()
 {
 	while(1)
@@ -140,7 +183,14 @@ void ToAcceptConnections()
 	}	
 }
 
+/*****************************************************************************************************
+**
+**   FunctionName    : AuthenticatedUserFunctionalities
+**
+**  DESCRIPTION  : function to recieve the commands process them and send the result to the client.
+**
 
+*****************************************************************************************************/
 void AuthenticatedUserFunctionalities(char *recvdata,char *filename ,char * type)
 {
         char comm[200]="";
@@ -224,7 +274,15 @@ void AuthenticatedUserFunctionalities(char *recvdata,char *filename ,char * type
 
 
 
-//function to implement anonymous user functionalities
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : AnonymousFunctions
+**
+**  DESCRIPTION  : function to implement anonymous user functionalities.
+**
+** 
+*****************************************************************************************************/
 
 void AnonymousFunctions(char * recvdata ,char * filename)
 {
@@ -254,7 +312,15 @@ void AnonymousFunctions(char * recvdata ,char * filename)
 }
 
 
-//function to implement admin functionalities
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : AnonymousFunctions
+**
+**  DESCRIPTION  : function to implement admin functionalities.
+**
+** 
+*****************************************************************************************************/
 void AdminFunction(char * recvdata,char * filename)
 {
       char command[100]="";
@@ -364,7 +430,15 @@ void AdminFunction(char * recvdata,char * filename)
 }
 
 
-//function to receive data
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : AnonymousFunctions
+**
+**  DESCRIPTION  : function to receive data.
+**
+** 
+*****************************************************************************************************/
 void SToRecvData(char * recvdata)
 {
         char temp[200]="";
@@ -378,7 +452,15 @@ void SToRecvData(char * recvdata)
 }
 
 
-//function to authenticate user
+//
+/*****************************************************************************************************
+**
+**   FunctionName    : AnonymousFunctions
+**
+**  DESCRIPTION  : function to authenticate user.
+**
+** 
+*****************************************************************************************************/
 void ToAuthenticateUser(char * type)
 {
         char receivedata[1024];
