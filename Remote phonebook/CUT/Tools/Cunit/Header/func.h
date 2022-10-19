@@ -3,7 +3,7 @@
 **
 **    DESCRIPTION    :      This file contains functions used for unit testing.
 *****************************************************************************************/
-char link[200] = "/home/kali/Desktop/cunit/db/";
+char link[200] = "../db/";
 #define SUCCESS 1
 #define FAILURE 0
 int removecontact(char * input, char * filename)
@@ -105,4 +105,5 @@ int ToChgrp(char * type,char *filename)
     	if(flag==0)
     	return FAILURE;
     	return SUCCESS;
-}
+}
+
