@@ -281,7 +281,7 @@ void ToGetUserCommands(char * type,char * commands)
 	      }
 	      
 	      if(strcmp(temp,"admin")==0)						//checks for the type admin
-	      {
+		  {
             	  char comm[200]="";
             	  char *input1="",*input2="",*input3="";
             	  char * tok;
@@ -316,8 +316,8 @@ void ToGetUserCommands(char * type,char * commands)
 							continue;
                         }
                   }
-                    else if(strcmp(comm,"ADD")==0)			//checks for the ADD command
-                    {											
+                  else if(strcmp(comm,"ADD")==0)			//checks for the ADD command
+                  {											
                   		if(input1!=NULL && input2!=NULL && input3!=NULL)
                   		{
                         	strcpy(commands,copysubcommand);
@@ -328,9 +328,9 @@ void ToGetUserCommands(char * type,char * commands)
                         	printf("Provide three inputs name,phonenumber,filename\n");
                             continue;
                         }
-                    }
-                   else if(strcmp(comm,"rm")==0)			//checks for the rm command
-                    {											
+                 }
+                 else if(strcmp(comm,"rm")==0)			//checks for the rm command
+                 {											
                   		if(input1!=NULL && input2!=NULL && input3==NULL)
                   		{
                         	strcpy(commands,copysubcommand);
@@ -341,10 +341,9 @@ void ToGetUserCommands(char * type,char * commands)
                         	printf("Provide two inputs name,filename\n");
                             continue;
                         }
-                    }
-                    
-                    else if(strcmp(comm,"list")==0)			//checks for the rm command
-                    {											
+                 }   
+                 else if(strcmp(comm,"list")==0)			//checks for the rm command
+                 {											
                   		if(input1!=NULL && input2!=NULL && input3==NULL)
                   		{
                         	strcpy(commands,copysubcommand);
@@ -355,10 +354,10 @@ void ToGetUserCommands(char * type,char * commands)
                         	printf("Provide two inputs name pattern,filename\n");
                             continue;
                         }
-                    }
+                 }
                     
-                    else if(strcmp(comm,"bye")==0 || strcmp(comm,"Bye")==0) 	//checks for bye/Bye command 
-                	{									
+                 else if(strcmp(comm,"bye")==0 || strcmp(comm,"Bye")==0) 	//checks for bye/Bye command 
+                 {									
 		               	if(input1==NULL && input2==NULL)
 		               	{
 		               		strcpy(commands,copysubcommand);
@@ -369,13 +368,13 @@ void ToGetUserCommands(char * type,char * commands)
 		                	printf("No inputs with bye/Bye\n");
 		                    continue;
 		                }
-		            }
-                    else
-                    {
+		         }
+                 else
+                 {
                      	printf("Admin can give addgrp,rmgrp,list,rm or ADD  subcommand only\n");
                         continue;
-                    }
-               }
+                  }
+		  }
                
 			   if(strcmp(temp,"anonymous user")==0)					//checks for anonymous user
 			   {											
