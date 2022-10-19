@@ -1,4 +1,9 @@
-//program to have the header file for server class
+/********************************************************************************************
+**     FILENAME      :      server.h
+**
+**    DESCRIPTION    :      This File contains server header files.
+*****************************************************************************************/
+
 
 #include <stdio.h>
 #include <sys/socket.h>
