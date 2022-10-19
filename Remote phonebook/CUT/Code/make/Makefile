@@ -9,7 +9,7 @@ BIN = ../bin
 #source file directory
 SRC = ../src
 #include file directory
-INC = ../inc
+INC = ../header
 #object file directory
 OBJ = ../obj
 #IFLAG
