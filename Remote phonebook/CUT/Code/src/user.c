@@ -15,18 +15,18 @@
 #include <signal.h>
 #include <arpa/inet.h>
 #include <sys/ipc.h>
-#include "user.h"
+#include <user.h>
 #include <stdbool.h>
 
-char DIR[500]="/home/kali/Desktop/run_final/db/";
-char AUTH[500]="/home/kali/Desktop/run_final/db/authentication.txt";
+char DIR[10]="../database/";
+char AUTH[1]="../database/authentication.txt";
 
 /****************************************************************************************************
 **
 ** FUNCTION NAME  :  AuthenticatedAddData
 ** DESCRIPTION    :  This functions is used to function to add data to the database for authenticated users
 **
-**  RETURN          : Returns 1 if successful else returns 0
+**RETURN          : Returns 1 if successful else returns 0
 **
 ****************************************************************************************************/
 
@@ -113,14 +113,14 @@ int ToAddData(char * input1 ,char * input2,char * filename)
 **
 ** FUNCTION NAME  :  ToRemoveContact
 ** DESCRIPTION    :  This functions is used to aremove contact from the database
-**  RETURN          : Returns 1 if successful else returns 0
+** RETURN          : Returns 1 if successful else returns 0
 **
 ****************************************************************************************************/
 int ToRemoveContact(char * input,char * filename)
 {
       char nm[200]="";
-	  strcpy(nm,input);
-	  FILE * fp1,* fp2;
+      strcpy(nm,input);
+      FILE * fp1,* fp2;
       char path1[1024]="";
       char path2[1024]="";
       char fname[200]="";
@@ -291,7 +291,7 @@ void ToChgrp(char * filename,char *type)
 **
 ** FUNCTION NAME  :  ToAddGrp
 ** DESCRIPTION    :  This functions is used to add group to the directory
-**  RETURN          : Returns 1 if successful else returns 0
+** RETURN        : Returns 1 if successful else returns 0
 **
 ****************************************************************************************************/
 int ToAddGrp(char * filename)
