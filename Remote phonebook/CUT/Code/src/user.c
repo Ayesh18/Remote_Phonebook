@@ -18,8 +18,8 @@
 #include <user.h>
 #include <stdbool.h>
 
-char DIR[10]="../database/";
-char AUTH[1]="../database/authentication.txt";
+char DIR[20]="../database/";
+char AUTH[50]="../database/authentication.txt";
 
 /****************************************************************************************************
 **
