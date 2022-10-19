@@ -2,10 +2,10 @@
 **
 **   FILENAME    :  client.c
 **
-**  DESCRIPTION  : This file contains the client side function
+**  DESCRIPTION  : This file contains the client side functions
 **                         
 ** DATE             NAME            REASON
-**-------------------------------------------------------------
+**-------------------------------------------------------------------------
 ** 14/10/2022       Username             
 **
 *****************************************************************************************************/
@@ -34,7 +34,7 @@ char ip_address[130];
 **
 ** FUNCTION NAME  :  Client
 ** DESCRIPTION    :  This functions starts client.
-**  RETURN          : Returns EXIT_SUCCESS if successful else returns EXIT_FAILURE
+**  RETURN        :  Returns EXIT_SUCCESS if successful else returns EXIT_FAILURE
 **
 ****************************************************************************************************/
 void Client()
@@ -50,7 +50,7 @@ void Client()
     sockfd=socket(AF_INET, SOCK_STREAM, 0);										
     if(sockfd < 0)
     {
-	      printf("\nSocket can't be created\n");
+	  printf("\nSocket can't be created\n");
           exit(EXIT_FAILURE);
     }
 }
@@ -433,8 +433,6 @@ void ToDisplayRecvData(char * recvData)
 {
 	printf("%s\n",recvData);
 }
-
-
 
 /****************************************************************************************************
 **
