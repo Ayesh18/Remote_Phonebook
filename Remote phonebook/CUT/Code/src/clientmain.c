@@ -1,4 +1,13 @@
-//program to define the client main function
+/**********************************************************************************
+	FILENAME: clientmain.c
+	DESCRIPTION:This file is used to define the client main function.
+	DATE            NAME              REASON
+	------------------------------------------------------------------
+    14/10/2022      Username          
+ 
+ * ********************************************************************************/
+
+
 #include <stdio.h>
 #include <signal.h>
 #include <string.h>
@@ -14,7 +23,6 @@ void signalHandler(int signal)
         }
 }
 
-//main function to execute client
 
 int main () 
 {
