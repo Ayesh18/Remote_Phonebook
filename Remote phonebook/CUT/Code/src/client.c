@@ -1,4 +1,14 @@
-//program to define the class client
+/*****************************************************************************************************
+**
+**   FILENAME    :  client.c
+**
+**  DESCRIPTION  : This file contains the client side function
+**                         
+** DATE             NAME            REASON
+**-------------------------------------------------------------
+** 14/10/2022       Username             
+**
+*****************************************************************************************************/
 
 
 #include <stdio.h>
@@ -20,6 +30,13 @@ struct sockaddr_in servaddr;
 int portnumber,slen,mlen,connectfd;
 char ip_address[130];
       
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  Client
+** DESCRIPTION    :  This functions starts client.
+**  RETURN          : Returns EXIT_SUCCESS if successful else returns EXIT_FAILURE
+**
+****************************************************************************************************/
 void Client()
 {
 	connectfd = 0;
@@ -39,14 +56,25 @@ void Client()
 }
 
 
-//function to get socket id
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToGetSockfd
+** DESCRIPTION    :  This function is to get socket id.
+**  RETURN          : sockfd
+**
+****************************************************************************************************/
 int ToGetSockfd()
 {
 	return sockfd ;
 }
 
 
-//function to get credentials from the User
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToGetCredentials
+** DESCRIPTION    :  This function is to get credentials from the User.
+**
+****************************************************************************************************/
 void ToGetCredentials(char * credentials)
 {
       //char *res;
@@ -78,8 +106,12 @@ void ToGetCredentials(char * credentials)
       strcat(credentials,password);
 }
 
-
-//function to connect to the server
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToServerConnect
+** DESCRIPTION    :  This function is to connect to the server
+**
+****************************************************************************************************/
 int ToServerConnect()
 {
 	connectfd=connect(sockfd,(struct sockaddr *)&servaddr,slen);
@@ -92,7 +124,12 @@ int ToServerConnect()
 }
 
 
-//function to send data from the client
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToSendData
+** DESCRIPTION    :  This function is to send data from the client
+**
+****************************************************************************************************/
 int ToSendData(char * str)
 {
 	char tem[200]="";
@@ -106,6 +143,12 @@ int ToSendData(char * str)
 }
 
 
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  CToRecvData
+** DESCRIPTION    :  This function is to recieve data from the client
+**
+****************************************************************************************************/
 void CToRecvData(char * recvdata)
 {
         char temp[200]="";
@@ -119,7 +162,12 @@ void CToRecvData(char * recvdata)
 }
 
 
-//function to get the subcommands from the use
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToGetUserCommands
+** DESCRIPTION    :  This function is to get the subcommands from the user
+**
+****************************************************************************************************/
 void ToGetUserCommands(char * type,char * commands)
 {
 	while(1)
@@ -375,7 +423,12 @@ void ToGetUserCommands(char * type,char * commands)
 
 
 
-//function to display data received from server
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToDisplayRecvData
+** DESCRIPTION    :  This function is to display data received from server
+**
+****************************************************************************************************/
 void ToDisplayRecvData(char * recvData)
 {
 	printf("%s\n",recvData);
@@ -383,7 +436,12 @@ void ToDisplayRecvData(char * recvData)
 
 
 
-//function to close connection from the server
+/****************************************************************************************************
+**
+** FUNCTION NAME  :  ToCloseClientConnections
+** DESCRIPTION    :  This function is to close connection from the server
+**
+****************************************************************************************************/
 int ToCloseClientConnections()
 {
       close(sockfd);
