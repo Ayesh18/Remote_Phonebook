@@ -17,7 +17,7 @@
 #include <server.h>
 #include <user.h>
 
-char SAUTH[40]="../db/authentication.txt";
+char SAUTH[40]="../database/authentication.txt";
 
 int sockfd;
 struct sockaddr_in servaddr ;
