@@ -14,10 +14,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "server.h"
-#include "user.h"
+#include <server.h>
+#include <user.h>
 
-char SAUTH[500]="/home/kali/Desktop/run_final/db/authentication.txt";
+char SAUTH[40]="../db/authentication.txt";
 
 int sockfd;
 struct sockaddr_in servaddr ;
@@ -29,24 +29,23 @@ int opt=1;
 
 void load()
 {
-	FILE *fp;
-    fp=fopen(SAUTH,"r");
-	if(fp==NULL)
-	{
-		printf("\nauthentication file doesn't exist\n");
-		exit(0);
-	}
-	fclose(fp);
+			FILE *fp;
+			fp=fopen(SAUTH,"r");
+			if(fp==NULL)
+			{
+				printf("\nauthentication file doesn't exist\n");
+				exit(0);
+			}
+			fclose(fp);
 }
 
 
 /*****************************************************************************************************
 **
-**   FunctionName    : ToCreateSocket
+**  FunctionName : ToCreateSocket
 **
 **  DESCRIPTION  : function to create socket.
 **   
-**
 *****************************************************************************************************/
 
 int ToCreateSocket()
@@ -54,28 +53,26 @@ int ToCreateSocket()
             slen=sizeof(struct sockaddr_in);
             memset(&servaddr,0,slen);
             memset(&cliaddr,0,slen);
-            servaddr.sin_family = AF_INET; 										//To use Internet addressing family
+            servaddr.sin_family = AF_INET; 				//To use Internet addressing family
             servaddr.sin_addr.s_addr = inet_addr(ADDRSERV);
             servaddr.sin_port = htons(PORT);
-            sockfd=socket(AF_INET, SOCK_STREAM, 0); 							//creating the socket
+            sockfd=socket(AF_INET, SOCK_STREAM, 0); 			//creating the socket
+			if(sockfd < 0)
+            {
+           		 printf("\nSocket creation has not been done\n");
+            }
             if (setsockopt(sockfd, SOL_SOCKET,SO_REUSEADDR | SO_REUSEPORT, &opt,sizeof(opt))) 
 			{
 				perror("setsockopt");
 				exit(EXIT_FAILURE);
 			}                                                                    
-            if(sockfd < 0)
-            {
-              printf("\nSocket creation has not been done\n");
-            }
             return 0;
 }
 
 
-
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : ToBindSocket
+**  FunctionName : ToBindSocket
 **
 **  DESCRIPTION  : function to bind the socket.
 **  
@@ -93,14 +90,11 @@ int ToBindSocket()
 }
 
 
-
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : ToListen
+**  FunctionName : ToListen
 **
 **  DESCRIPTION  : function to call listening to the port 8028.
-**
 **
 *****************************************************************************************************/
 int ToListen()
@@ -115,15 +109,12 @@ int ToListen()
 }
 
 
-
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : ToAcceptConnections
+**  FunctionName : ToAcceptConnections
 **
 **  DESCRIPTION  : function to accept connection and add concurrency by using child process.
 **
-
 *****************************************************************************************************/
 void ToAcceptConnections()
 {
@@ -185,11 +176,10 @@ void ToAcceptConnections()
 
 /*****************************************************************************************************
 **
-**   FunctionName    : AuthenticatedUserFunctionalities
+**  FunctionName : AuthenticatedUserFunctionalities
 **
-**  DESCRIPTION  : function to recieve the commands process them and send the result to the client.
+**  DESCRIPTION  : function to recieve the user commands,process them and send the result to the client.
 **
-
 *****************************************************************************************************/
 void AuthenticatedUserFunctionalities(char *recvdata,char *filename ,char * type)
 {
@@ -207,6 +197,7 @@ void AuthenticatedUserFunctionalities(char *recvdata,char *filename ,char * type
 			if(tok!=NULL)
 			strcpy(input2,tok);
 		}
+	
 		if(strcmp(comm,"ADD")==0)
 		{
 			int res=AuthenticatedAddData(input1,input2,filename);							//calling the athenticated adddata function of user 
@@ -271,17 +262,12 @@ void AuthenticatedUserFunctionalities(char *recvdata,char *filename ,char * type
 }
 
 
-
-
-
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : AnonymousFunctions
+**  FunctionName  : AnonymousFunctions
 **
 **  DESCRIPTION  : function to implement anonymous user functionalities.
 **
-** 
 *****************************************************************************************************/
 
 void AnonymousFunctions(char * recvdata ,char * filename)
@@ -312,14 +298,12 @@ void AnonymousFunctions(char * recvdata ,char * filename)
 }
 
 
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : AnonymousFunctions
+**  FunctionName : AdminFunction
 **
 **  DESCRIPTION  : function to implement admin functionalities.
 **
-** 
 *****************************************************************************************************/
 void AdminFunction(char * recvdata,char * filename)
 {
@@ -408,7 +392,7 @@ void AdminFunction(char * recvdata,char * filename)
             }
       }
       else if(strcmp(command,"list")==0)														//checking if the command is list
-		{														
+	  {														
 		     char concat[1024]="";
 		     strcpy(filename,input2);
 		     int res=Adminlistcontact(input1,filename,concat); 								//calling the user function to list the contacts
@@ -426,17 +410,15 @@ void AdminFunction(char * recvdata,char * filename)
 		          char neg[200]="No contacts with given name pattern";
 		          send(connectfd,neg,strlen(neg),0);
 		     }
-		}
+	   }
 }
 
 
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : AnonymousFunctions
+** FunctionName  : SToRecvData
 **
-**  DESCRIPTION  : function to receive data.
-**
+**  DESCRIPTION  : function to receive data from clients.
 ** 
 *****************************************************************************************************/
 void SToRecvData(char * recvdata)
@@ -451,14 +433,11 @@ void SToRecvData(char * recvdata)
         }
 }
 
-
-//
 /*****************************************************************************************************
 **
-**   FunctionName    : AnonymousFunctions
+**  FunctionName : ToAuthenticate user
 **
-**  DESCRIPTION  : function to authenticate user.
-**
+**  DESCRIPTION  : function to receive credentials from client and authenticate user.
 ** 
 *****************************************************************************************************/
 void ToAuthenticateUser(char * type)
