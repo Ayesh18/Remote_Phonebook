@@ -45,26 +45,25 @@ client:
 	 ./$(BIN)/client
 
 clean:
-	rm $(BIN)/server 
-	rm $(BIN)/client 
-	rm $(OBJ)/server.o 
-	rm $(OBJ)/client.o 
-	rm $(OBJ)/user.o
+        rm $(BIN)/server
+        rm $(BIN)/client
+        rm $(OBJ)/server.o
+        rm $(OBJ)/client.o
+        rm $(OBJ)/user.o
 cleanall:
-	rm $(OBJ)/*
-	rm $(BIN)/*
-	rm gmon.out
-	rm *.gcov
+        rm $(OBJ)/*
+        rm $(BIN)/*
+        rm *.out *.gcov *.gcda *.gcno
 	
 gprofserver: 
-	gprof -b ../bin/server gmon.out
+	gprof -b $(BIN)/server gmon.out
 		
 gprofclient:
-	gprof -b ../bin/client gmon.out
+	gprof -b $(BIN)/client gmon.out
 	
 gcov:
-	gcov ../bin/client-clientmain
-	gcov ../obj/client
+	gcov clientmain
+	gcov $(OBJ)/client
 
 gcovshow:
 	cat clientmain.c.gcov
