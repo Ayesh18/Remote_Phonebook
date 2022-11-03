@@ -1,4 +1,0 @@
-5,6
-kill,kiu
-bc,de
-ef,gh
